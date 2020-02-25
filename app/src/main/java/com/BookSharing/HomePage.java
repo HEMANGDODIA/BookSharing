@@ -26,8 +26,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
 
 public class HomePage extends AppCompatActivity {
+    Button button_dBooks;
+    Button button_dStationary;
+    Button button_dNotes;
+    Button button_dReferences;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -59,6 +64,48 @@ public class HomePage extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        init();
+        button_dBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(HomePage.this,donee_books.class);
+                startActivity(in);
+            }
+        });
+        button_dStationary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in1=new Intent(HomePage.this,donee_stationary.class);
+                startActivity(in1);
+
+
+            }
+        });
+        button_dNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in2=new Intent(HomePage.this,donee_notes.class);
+                startActivity(in2);
+
+
+            }
+        });
+        button_dReferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in3=new Intent(HomePage.this,donee_references.class);
+                startActivity(in3);
+            }
+        });
+
+    }
+    void init(){
+        button_dBooks=(Button)findViewById(R.id.dbutton);
+        button_dStationary=(Button)findViewById(R.id.dbutton1);
+        button_dNotes=(Button)findViewById(R.id.dbutton2);
+        button_dReferences=(Button)findViewById(R.id.dbutton3);
+
     }
 
     @Override
