@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReferenceSenior"></activity>
+        <activity android:name=".donee_references"></activity>
+        <activity android:name=".donee_notes" />
+        <activity android:name=".donee_stationary" />
+        <activity android:name=".donee_books" />
+        <activity android:name=".ReferenceSenior" />
         <activity android:name=".Notes_senior" />
         <activity android:name=".Material_senior" />
         <activity android:name=".BooksSenior" />

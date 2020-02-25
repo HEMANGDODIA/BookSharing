@@ -60,10 +60,10 @@ public class SeniorHome extends AppCompatActivity {
     }
 
     void init(){
-        button_sBooks=(Button)findViewById(R.id.button);
-        button_sStationary=(Button)findViewById(R.id.button1);
-        button_sNotes=(Button)findViewById(R.id.button2);
-        button_sReferences=(Button)findViewById(R.id.button3);
+        button_sBooks=(Button)findViewById(R.id.sbutton);
+        button_sStationary=(Button)findViewById(R.id.sbutton1);
+        button_sNotes=(Button)findViewById(R.id.sbutton2);
+        button_sReferences=(Button)findViewById(R.id.sbutton3);
 
     }
 }
