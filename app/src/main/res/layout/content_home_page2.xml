@@ -42,6 +42,7 @@
             android:background="@color/white"
             android:drawableTop="@mipmap/books"
             android:text="Books"
+            android:textSize="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
@@ -51,6 +52,7 @@
             android:background="@color/white"
             android:drawableTop="@mipmap/stationary"
             android:text="Stationary"
+            android:textSize="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <Button
@@ -58,8 +60,7 @@
             style="@style/button5"
             android:background="@color/white"
             android:drawableTop="@mipmap/notes"
-
-
+            android:textSize="10dp"
             android:text="Notes"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -67,10 +68,10 @@
         <Button
             android:id="@+id/button3"
             style="@style/button5"
-            android:layout_margin="5dp"
             android:background="@color/white"
             android:drawableTop="@mipmap/references"
             android:text="References"
+            android:textSize="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
     </LinearLayout>
     </LinearLayout>
