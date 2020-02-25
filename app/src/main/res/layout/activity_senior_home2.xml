@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SeniorHome">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/button"
+        style="@style/button5"
+        android:drawableTop="@mipmap/books"
+        android:background="@color/white"
+        android:text="Books" />
+
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/button5"
+        android:background="@color/white"
+        android:drawableTop="@mipmap/stationary"
+        android:text="Stationary" />
+    <Button
+        android:id="@+id/button1"
+        style="@style/button5"
+        android:drawableTop="@mipmap/notes"
+        android:background="@color/white"
+
+
+        android:text="Notes" />
+
+
+
+    <Button
+        style="@style/button5"
+        android:id="@+id/button3"
+        android:layout_margin="5dp"
+        android:background="@color/white"
+        android:drawableTop="@mipmap/references"
+        android:text="References" />
+
+</LinearLayout>
