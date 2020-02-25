@@ -102,6 +102,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="128dp"
         android:layout_marginEnd="10dp"
+        android:background="#EFCACA"
         app:layout_constraintEnd_toStartOf="@+id/editText5"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
