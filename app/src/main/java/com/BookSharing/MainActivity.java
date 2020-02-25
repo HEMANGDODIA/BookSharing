@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.textViewSignUp:
+
                 startActivity(new Intent(this,SignUp.class));
+                finish();
                 break;
 
             case R.id.buttonLogin:
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful())
                 {
+                    finish();
 
                     Intent intent=new Intent(MainActivity.this,Choice.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);

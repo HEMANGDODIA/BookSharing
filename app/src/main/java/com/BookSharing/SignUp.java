@@ -49,6 +49,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
                 break;
 
             case R.id.textView1:
+                finish();
                 startActivity(new Intent(this,MainActivity.class));
                 break;
         }
@@ -92,6 +93,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
                 progressBar.setVisibility(View.GONE);
                if (task.isSuccessful())
                {
+                   finish();
                    Intent intent=new Intent(SignUp.this,Profile.class);
                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                    startActivity(intent);
