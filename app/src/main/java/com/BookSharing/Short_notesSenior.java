@@ -9,6 +9,6 @@ public class Short_notesSenior extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_short_notes_senior);
+        setContentView(R.layout.activity_notes_senior);
     }
 }
