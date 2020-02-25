@@ -6,21 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
-    <ImageView
-        android:id="@+id/imageViewprofile"
-        android:layout_width="233dp"
-        android:layout_height="196dp"
-        android:layout_marginStart="191dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="188dp"
-        android:layout_marginBottom="443dp"
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-24dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ImageView
+            android:id="@+id/imageViewprofile"
+            android:layout_width="204dp"
+            android:layout_height="181dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="110dp"
+            app:layout_constraintVertical_bias="0.359"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
+
+
+        <ProgressBar
+            android:id="@+id/progressbarprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"></ProgressBar>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editTextprofile"
+        android:layout_width="211dp"
+        android:layout_height="40dp"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:ems="10"
+        android:hint="Name"
+        android:layout_marginTop="150dp"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.359"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <Button
         android:id="@+id/buttonsave"
@@ -36,23 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
        />
 
-    <EditText
-        android:id="@+id/editTextprofile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="110dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        app:layout_constraintBottom_toTopOf="@+id/buttonsave"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewprofile" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="355dp"
@@ -64,7 +77,6 @@
         android:textAlignment="center"
         android:text="Tap on camare to Choose profile picture"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

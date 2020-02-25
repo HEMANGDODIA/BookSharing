@@ -92,7 +92,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
                 progressBar.setVisibility(View.GONE);
                if (task.isSuccessful())
                {
-                   Intent intent=new Intent(SignUp.this,HomePage.class);
+                   Intent intent=new Intent(SignUp.this,Profile.class);
                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                    startActivity(intent);
                }
