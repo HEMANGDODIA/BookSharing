@@ -37,7 +37,7 @@
         style="@style/button5"
         android:textSize="10dp"
         android:background="@color/white"
-        android:drawableTop="@mipmap/donate"
+        android:drawableTop="@mipmap/donete"
 
         android:text="Donor"
         app:layout_constraintBottom_toBottomOf="parent"
