@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonbooksS"
             style="@style/button5"
             android:textSize="10dp"
             android:drawableTop="@mipmap/books"
@@ -23,7 +23,7 @@
 
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonstationaryS"
             style="@style/button5"
             android:textSize="10dp"
             android:background="@color/white"
@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonnotesS"
             style="@style/button5"
             android:textSize="10dp"
             android:drawableTop="@mipmap/notes"
@@ -43,7 +43,7 @@
 
             android:text="Notes" />
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonreferencesS"
             style="@style/button5"
             android:textSize="10dp"
             android:drawableTop="@mipmap/references"

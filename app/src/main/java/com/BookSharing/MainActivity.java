@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     finish();
 
-                    Intent intent=new Intent(MainActivity.this,Choice.class);
+                    Intent intent=new Intent(MainActivity.this,ReferenceSenior.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }else{
