@@ -13,8 +13,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +41,7 @@ public class Profile extends AppCompatActivity {
     ImageView imageView;
     EditText editText;
 
+    TextView textView;
     String message,downloadImageUrl;
     Uri uriProfileImage;
     ProgressBar progressBar;
@@ -50,6 +53,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        textView=findViewById(R.id.textViewVerified);
         mAuth=FirebaseAuth.getInstance();
         editText=findViewById(R.id.editTextprofile);
         imageView=findViewById(R.id.imageViewprofile);
@@ -63,6 +67,7 @@ public class Profile extends AppCompatActivity {
 
             }
         });
+        loadUserInformation();
 
         findViewById(R.id.buttonsave).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +85,48 @@ public class Profile extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(mAuth.getCurrentUser()==null)
+        {
+            finish();
+            startActivity(new Intent(this,MainActivity.class));
+        }
+    }
+
+
+    private void loadUserInformation() {
+        final FirebaseUser user=mAuth.getCurrentUser();
+        if(user !=null) {
+            if (user.getPhotoUrl() != null) {
+                Glide.with(this).load(user.getPhotoUrl().toString()).into(imageView);
+            }
+            if (user.getDisplayName() != null) {
+            editText.setText(user.getDisplayName());
+            }
+            if(user.isEmailVerified())
+            {
+                textView.setText("Email Verified");
+            }else
+            {
+                textView.setText("Email Not Verified(Click to Verify)");
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(Profile.this,"Verification Email Sent",Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+            }
+
+        }
     }
 
     private void saveUserinformation() {

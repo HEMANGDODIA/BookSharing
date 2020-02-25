@@ -31,7 +31,10 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:visibility="gone"></ProgressBar>
+
+
     </RelativeLayout>
+
 
     <EditText
         android:id="@+id/editTextprofile"
@@ -42,9 +45,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="Name"
-        android:layout_marginTop="150dp"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,21 +66,28 @@
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-       />
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verified"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:id="@+id/textViewVerified"></TextView>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="355dp"
         android:layout_height="22dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="15dp"
-        android:textAlignment="center"
+        android:layout_marginBottom="572dp"
         android:text="Tap on camare to Choose profile picture"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
