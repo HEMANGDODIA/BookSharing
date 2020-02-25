@@ -35,12 +35,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
+
         <Button
             android:id="@+id/button"
             style="@style/button5"
-            android:drawableTop="@mipmap/books"
             android:background="@color/white"
-            android:text="Books" />
+            android:drawableTop="@mipmap/books"
+            android:text="Books"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
         <Button
@@ -48,25 +50,28 @@
             style="@style/button5"
             android:background="@color/white"
             android:drawableTop="@mipmap/stationary"
-            android:text="Stationary" />
+            android:text="Stationary"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
         <Button
             android:id="@+id/button1"
             style="@style/button5"
-            android:drawableTop="@mipmap/notes"
             android:background="@color/white"
+            android:drawableTop="@mipmap/notes"
 
 
-            android:text="Notes" />
-
+            android:text="Notes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 
         <Button
-            style="@style/button5"
             android:id="@+id/button3"
+            style="@style/button5"
             android:layout_margin="5dp"
             android:background="@color/white"
             android:drawableTop="@mipmap/references"
-            android:text="References" />
+            android:text="References"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
     </LinearLayout>
     </LinearLayout>
 
