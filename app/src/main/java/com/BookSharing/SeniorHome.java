@@ -44,6 +44,13 @@ public class SeniorHome extends AppCompatActivity {
 
             }
         });
+        button_sReferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in3=new Intent(SeniorHome.this,ReferenceSenior.class);
+                startActivity(in3);
+            }
+        });
 
 
 
@@ -56,7 +63,7 @@ public class SeniorHome extends AppCompatActivity {
         button_sBooks=(Button)findViewById(R.id.button);
         button_sStationary=(Button)findViewById(R.id.button1);
         button_sNotes=(Button)findViewById(R.id.button2);
-        button_sReferences=(Button)findViewById(R.id.radioButton3);
+        button_sReferences=(Button)findViewById(R.id.button3);
 
     }
 }
