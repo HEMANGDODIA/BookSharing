@@ -35,44 +35,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
-
         <Button
             android:id="@+id/button"
             style="@style/button5"
-            android:background="@color/white"
-            android:drawableTop="@mipmap/books"
-            android:text="Books"
             android:textSize="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:drawableTop="@mipmap/books"
+            android:background="@color/white"
+            android:text="Books" />
 
 
         <Button
             android:id="@+id/button2"
             style="@style/button5"
+            android:textSize="10dp"
             android:background="@color/white"
             android:drawableTop="@mipmap/stationary"
-            android:text="Stationary"
-            android:textSize="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
+            android:text="Stationary" />
         <Button
             android:id="@+id/button1"
             style="@style/button5"
-            android:background="@color/white"
+            android:textSize="10dp"
             android:drawableTop="@mipmap/notes"
-            android:textSize="10dp"
-            android:text="Notes"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-
-        <Button
-            android:id="@+id/button3"
-            style="@style/button5"
             android:background="@color/white"
-            android:drawableTop="@mipmap/references"
-            android:text="References"
+
+
+            android:text="Notes" />
+        <Button
+            android:id="@+id/button1"
+            style="@style/button5"
             android:textSize="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:drawableTop="@mipmap/references"
+            android:background="@color/white"
+
+
+            android:text="References" />
+
+
+
     </LinearLayout>
     </LinearLayout>
 
