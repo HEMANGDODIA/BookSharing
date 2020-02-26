@@ -1,29 +1,32 @@
 package com.BookSharing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-
-import java.util.regex.Pattern;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity  implements View.OnClickListener {
 
     ProgressBar progressBar;
     EditText editTextEmail,editTextPassword;
     private FirebaseAuth mAuth;
+    @SuppressLint("CutPasteId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +40,66 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
         findViewById(R.id.buttonSignup).setOnClickListener(this);
         findViewById(R.id.textView1).setOnClickListener(this);
 
+//        final EditText emailname = findViewById(R.id.editTextEmail);
+//        final com.google.android.material.textfield.TextInputEditText fname= findViewById(R.id.textInputEditText3);
+//        final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
+//        final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
+//        final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
+//        Button btn_submit = findViewById(R.id.buttonSignup);
+//
+//        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+//        final DatabaseReference lRef = mRef.child("profile info");
 
+
+
+//        btn_submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String email1 = emailname.getText().toString().trim();
+//                String firstname1 =fname.getText().toString().trim();
+//                String lastname1 =lname.getText().toString().trim();
+//                String mobileno1 =mno.getText().toString().trim();
+//                String collegeid1 =cid.getText().toString().trim();
+//
+//                DatabaseReference nRef = lRef.child(firstname1);
+//                nRef.child("email").setValue(email1);
+//                nRef.child("firstname").setValue(firstname1);
+//                nRef.child("lastname").setValue(lastname1);
+//                nRef.child("mobile number").setValue(mobileno1);
+//                nRef.child("college id").setValue(collegeid1);
+//            }
+//        });
     }
+
+//    void fun(){
+//        final EditText emailname = findViewById(R.id.editTextEmail);
+//        final com.google.android.material.textfield.TextInputEditText fname= findViewById(R.id.textInputEditText3);
+//        final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
+//        final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
+//        final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
+//    }
 
     @Override
     public void onClick(View v) {
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference lRef = mRef.child("profile info");
+        final EditText emailname = findViewById(R.id.editTextEmail);
+        final com.google.android.material.textfield.TextInputEditText fname= findViewById(R.id.textInputEditText3);
+        final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
+        final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
+        final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
+        String email1 = emailname.getText().toString().trim();
+        String firstname1 =fname.getText().toString().trim();
+        String lastname1 =lname.getText().toString().trim();
+        String mobileno1 =mno.getText().toString().trim();
+        String collegeid1 =cid.getText().toString().trim();
+
+        DatabaseReference nRef = lRef.child(firstname1);
+        nRef.child("email").setValue(email1);
+        nRef.child("firstname").setValue(firstname1);
+        nRef.child("lastname").setValue(lastname1);
+        nRef.child("mobile number").setValue(mobileno1);
+        nRef.child("college id").setValue(collegeid1);
         switch (v.getId())
         {
             case R.id.buttonSignup:
