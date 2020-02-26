@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUp">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"><androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
@@ -195,5 +199,5 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         tools:ignore="MissingConstraints"></ProgressBar>
-
+</androidx.constraintlayout.widget.ConstraintLayout></ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
