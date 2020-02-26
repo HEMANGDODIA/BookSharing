@@ -102,6 +102,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="128dp"
         android:layout_marginEnd="10dp"
+        android:background="#EFCACA"
         app:layout_constraintEnd_toStartOf="@+id/editText5"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +111,7 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="59dp"
+        android:layout_width="52dp"
         android:layout_height="44dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
@@ -123,8 +124,8 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="47dp"
-        android:layout_height="41dp"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
@@ -150,17 +151,19 @@
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="63dp"
-        android:layout_height="47dp"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="216dp"
+        android:background="#D8FACC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/editText3"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:layout_constraintVertical_bias="0.37"
         app:srcCompat="@drawable/whatsapp" />
 
 

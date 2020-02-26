@@ -14,7 +14,13 @@
         android:layout_marginTop="236dp"
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="70dp"
+        android:drawableTop="@mipmap/donee"
         android:text="Donee"
+        style="@style/button5"
+        android:textSize="10dp"
+        android:background="@color/white"
+
+
         app:layout_constraintBottom_toTopOf="@+id/buttonsenior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +34,11 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="164dp"
         android:layout_marginBottom="201dp"
+        style="@style/button5"
+        android:textSize="10dp"
+        android:background="@color/white"
+        android:drawableTop="@mipmap/donete"
+
         android:text="Donor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

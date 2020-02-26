@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
         <Button
-            android:id="@+id/button"
+            android:id="@+id/dbutton"
             style="@style/button5"
             android:textSize="10dp"
             android:drawableTop="@mipmap/books"
@@ -46,14 +46,14 @@
 
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/dbutton1"
             style="@style/button5"
             android:textSize="10dp"
             android:background="@color/white"
             android:drawableTop="@mipmap/stationary"
             android:text="Stationary" />
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/dbutton2"
             style="@style/button5"
             android:textSize="10dp"
             android:drawableTop="@mipmap/notes"
@@ -62,7 +62,7 @@
 
             android:text="Notes" />
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/dbutton3"
             style="@style/button5"
             android:textSize="10dp"
             android:drawableTop="@mipmap/references"
