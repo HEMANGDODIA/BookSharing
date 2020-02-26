@@ -44,13 +44,6 @@ public class SeniorHome extends AppCompatActivity {
 
             }
         });
-        button_sReferences.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in3=new Intent(SeniorHome.this,ReferenceSenior.class);
-                startActivity(in3);
-            }
-        });
 
 
 
