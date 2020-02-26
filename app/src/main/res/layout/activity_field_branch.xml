@@ -6,31 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FieldBranch">
 
-    <ImageView
-        android:id="@+id/image4"
-        android:layout_width="48dp"
-        android:layout_height="45dp"
-        android:layout_alignTop="@+id/actv1"
-        android:layout_alignBottom="@+id/actv1"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="68dp"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actv3"
-        app:srcCompat="@drawable/arrow" />
-
-    <ImageView
-        android:id="@+id/image3"
-        android:layout_width="47dp"
-        android:layout_height="43dp"
-        android:layout_alignTop="@+id/actv1"
-        android:layout_alignBottom="@+id/actv1"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="68dp"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actv2"
-        app:srcCompat="@drawable/arrow" />
 
     <Button
         android:id="@+id/SubmitField"
@@ -46,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/actv4" />
 
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/actv1"
         android:layout_width="283dp"
         android:layout_height="50dp"
@@ -60,7 +35,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/actv2"
         android:layout_width="281dp"
         android:layout_height="48dp"
@@ -74,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/actv1"
         tools:ignore="MissingConstraints" />
 
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/actv3"
         android:layout_width="281dp"
         android:layout_height="53dp"
@@ -88,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/actv2"
         tools:ignore="MissingConstraints" />
 
-    <AutoCompleteTextView
+    <Spinner
         android:id="@+id/actv4"
         android:layout_width="281dp"
         android:layout_height="48dp"
@@ -102,31 +77,6 @@
         app:layout_constraintTop_toBottomOf="@+id/actv3"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="48dp"
-        android:layout_height="45dp"
-        android:layout_alignTop="@+id/actv1"
-        android:layout_alignBottom="@+id/actv1"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="68dp"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrow" />
-
-    <ImageView
-        android:id="@+id/image2"
-        android:layout_width="48dp"
-        android:layout_height="45dp"
-        android:layout_alignTop="@+id/actv1"
-        android:layout_alignBottom="@+id/actv1"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="68dp"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actv1"
-        app:srcCompat="@drawable/arrow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
