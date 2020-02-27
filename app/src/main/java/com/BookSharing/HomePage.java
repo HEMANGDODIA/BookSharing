@@ -42,8 +42,8 @@ public class HomePage extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page2);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Toolbar toolbar1 = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar1);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +120,10 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+            case R.id.senior_profile:
+
+                startActivity(new Intent(this,senior_profile_display.class));
+                break;
             case R.id.Logout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
