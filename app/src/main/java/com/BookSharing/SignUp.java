@@ -123,6 +123,9 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
         final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
         final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
         final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
+        String regexStr = "^[0-9]$";
+        String regexStr1 = "^[1721]$";
+
 
 
         String firstname1 =fname.getText().toString().trim();
@@ -132,18 +135,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
         String Confirmpassword =fname.getText().toString().trim();
 
 
-        if (firstname1.isEmpty() && fname.length() <= 4 && fname.length() >= 12)
-        {
-            fname.setError("Enter valid Firstname... ");
-            fname.requestFocus();
-            return;
-        }
-        if (lastname1.isEmpty() && lname.length() <= 4 && lname.length() >= 12)
-        {
-            lname.setError("Enter valid LastName");
-            lname.requestFocus();
-            return;
-        }
+
 
         if(email.isEmpty())
         {
@@ -165,13 +157,16 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
             return;
         }
 
-        if(password.isEmpty() && password.length() <= 6 && password.length() >= 18 )
+        if(password.isEmpty())
         {
 
             editTextPassword.setError("Enter Valid Password");
             editTextPassword.requestFocus();
             return;
 
+        }
+        if(mno.getText().toString().length()<10 || mobileno1.length()>13 || mobileno1.matches(regexStr)==false  ) {
+            Toast.makeText(SignUp.this, "Please enter " + "\n" + " valid phone number", Toast.LENGTH_SHORT).show();
         }
         if(Confirmpassword.isEmpty())
         {
@@ -181,18 +176,40 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
                editTextConfirmPassword.setError("Password do not match");
             }
         }
-        if (mobileno1.isEmpty() && mobileno1.length()!=10)
+
+
+       /* if (mobileno1.isEmpty())
         {
             mno.setError("Mobile is required");
-            mno.requestFocus();
-            return;
+            if (mobileno1.length()!=10)
+            {
+                mno.setError("valid Mobile no");
+            }
+        }*/
+        if(cid.getText().toString().length()!=14 || collegeid1.matches(regexStr1)==false  ) {
+            Toast.makeText(SignUp.this, "Please enter " + "\n" + " valid College id", Toast.LENGTH_SHORT).show();
         }
-
-        if (collegeid1.isEmpty())
+        /*if (collegeid1.isEmpty())
         {
             cid.setError("CollegeId is required");
             cid.requestFocus();
             return;
+        }*/
+        if (firstname1.isEmpty())
+        {
+            fname.setError("Enter valid Firstname... ");
+           if (fname.length()<= 4 && fname.length()>= 12)
+           {
+               fname.setError("valid name");
+           }
+        }
+        if (lastname1.isEmpty())
+        {
+            lname.setError("Enter valid LastName");
+            if (lname.length()<= 4 && lname.length()>= 12)
+            {
+                lname.setError("valid name");
+            }
         }
 
         progressBar.setVisibility(View.VISIBLE);
