@@ -2,6 +2,7 @@ package com.BookSharing;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,6 +26,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -34,7 +38,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,62 +54,11 @@ public class HomePage extends AppCompatActivity {
     Button button_dNotes;
     Button button_dReferences;
 
+
     private AppBarConfiguration mAppBarConfiguration;
-    ProgressDialog pDialog;
-    RecyclerView rv;
-    ArrayList<String> Bookname,AutherName,Datails,MobileNO;
-    FirebaseAuth firebaseAuth;
-    FirebaseDatabase fd;
-    DatabaseReference ref;
-    TextView profilename,profileemailadd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-        Bookname=new ArrayList<>();
-        AutherName=new ArrayList<>();
-        Datails=new ArrayList<>();
-        MobileNO=new ArrayList<>();
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        fd = FirebaseDatabase.getInstance();
-        ref = fd.getReference().child("Books").child(FirebaseAuth.getInstance().getUid());
-        Bookname.clear();
-        AutherName.clear();
-        Datails.clear();
-        MobileNO.clear();
-        /*ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    HashMap<String, String> ob = (HashMap) child.getValue();
-                    String Books = ob.get("Books");
-                    String Material = ob.get("Material");
-                    String Notes = ob.get("Notes");
-                    for (DataSnapshot child2 : child.getChildren()) {
-                        for (DataSnapshot child3 : child2.getChildren()) {
-                            Map<String, String> ob2 = (Map) child3.getValue();
-                            jobid.add(ob2.get("JobId"));
-                            compid.add(ob2.get("Companyid"));
-                            company.add(comp);
-                            sector.add(sect);
-                            description.add(desc);
-                            jobtitle.add(ob2.get("JobTitle"));
-                            location.add(ob2.get("Location"));
-                            experience.add(ob2.get("Experience"));
-                            salary.add(ob2.get("Salary"));
-
-
-
-                        }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page2);
