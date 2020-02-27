@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUp extends AppCompatActivity  implements View.OnClickListener {
 
     ProgressBar progressBar;
-    EditText editTextEmail,editTextPassword;
+    EditText editTextEmail,editTextPassword,editTextConfirmPassword;
     private FirebaseAuth mAuth;
     @SuppressLint("CutPasteId")
     @Override
@@ -34,6 +34,8 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
 
         editTextEmail=findViewById(R.id.editTextEmail);
         editTextPassword=findViewById(R.id.editTextPassword);
+        editTextConfirmPassword=findViewById(R.id.textInputEditText4);
+
         progressBar=findViewById(R.id.progressbar);
 
         mAuth = FirebaseAuth.getInstance();
@@ -117,6 +119,31 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
     private void registerUser() {
         String email=editTextEmail.getText().toString().trim();
         String password=editTextPassword.getText().toString().trim();
+        final com.google.android.material.textfield.TextInputEditText fname= findViewById(R.id.textInputEditText3);
+        final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
+        final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
+        final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
+
+
+        String firstname1 =fname.getText().toString().trim();
+        String lastname1 =lname.getText().toString().trim();
+        String mobileno1 =mno.getText().toString().trim();
+        String collegeid1 =cid.getText().toString().trim();
+        String Confirmpassword =fname.getText().toString().trim();
+
+
+        if (firstname1.isEmpty() && fname.length() <= 4 && fname.length() >= 12)
+        {
+            fname.setError("Enter valid Firstname... ");
+            fname.requestFocus();
+            return;
+        }
+        if (lastname1.isEmpty() && lname.length() <= 4 && lname.length() >= 12)
+        {
+            lname.setError("Enter valid LastName");
+            lname.requestFocus();
+            return;
+        }
 
         if(email.isEmpty())
         {
@@ -131,18 +158,41 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
             editTextEmail.requestFocus();
             return;
         }
-        if(password.length()<6)
+        if(password.length()<6 )
         {
             editTextPassword.setError("Minimum lenght of password should be 6");
             editTextPassword.requestFocus();
             return;
         }
-        if(password.isEmpty())
+
+        if(password.isEmpty() && password.length() <= 6 && password.length() >= 18 )
         {
-            editTextPassword.setError("Password is required");
+
+            editTextPassword.setError("Enter Valid Password");
             editTextPassword.requestFocus();
             return;
 
+        }
+        if(Confirmpassword.isEmpty())
+        {
+            editTextConfirmPassword.setError("ConfirmPassword is required");
+            if (!Confirmpassword.equals(password))
+            {
+               editTextConfirmPassword.setError("Password do not match");
+            }
+        }
+        if (mobileno1.isEmpty() && mobileno1.length()!=10)
+        {
+            mno.setError("Mobile is required");
+            mno.requestFocus();
+            return;
+        }
+
+        if (collegeid1.isEmpty())
+        {
+            cid.setError("CollegeId is required");
+            cid.requestFocus();
+            return;
         }
 
         progressBar.setVisibility(View.VISIBLE);
