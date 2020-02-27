@@ -35,6 +35,10 @@ public class SeniorHome extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
 
+            case R.id.senior_profile:
+                Intent mi = new Intent(SeniorHome.this,senior_profile_display.class);
+                startActivity(mi);
+                break;
             case R.id.seniorLogout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
