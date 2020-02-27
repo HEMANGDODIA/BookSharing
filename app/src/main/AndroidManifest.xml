@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".senior_profile_display"></activity>
-        <activity android:name=".donee_references" />
-        <activity android:name=".donee_notes" />
-        <activity android:name=".donee_stationary" />
-        <activity android:name=".donee_books" />
+        <activity android:name=".donee_references" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".donee_notes" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".donee_stationary" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".donee_books" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ReferenceSenior" />
         <activity android:name=".Notes_senior" />
         <activity android:name=".Material_senior" />
