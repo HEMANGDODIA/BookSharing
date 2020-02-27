@@ -145,7 +145,7 @@ public class BooksSenior extends AppCompatActivity {
                     Toast.makeText(BooksSenior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
                     Map<String,String> ob1=new HashMap<>();
                     ob1.put("url",mStorageRef.getDownloadUrl().toString());
-                    ob1.put("name",mEditTextBookname.getText().toString().trim());
+                    ob1.put("Book name",mEditTextBookname.getText().toString().trim());
                     ob1.put("Auther's Name",mEditTextAuthorname.getText().toString().trim());
                     ob1.put("Datails",mEditTextDetails.getText().toString().trim());
                     ob1.put("Mobile NO",mEditTextNO.getText().toString().trim());

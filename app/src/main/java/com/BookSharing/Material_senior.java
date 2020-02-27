@@ -132,7 +132,7 @@ public class Material_senior extends AppCompatActivity {
                     Toast.makeText(Material_senior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
                     Map<String,String> ob1=new HashMap<>();
                     ob1.put("url",mStorageRef.getDownloadUrl().toString());
-                    ob1.put("name",mEditTextMaterialname.getText().toString().trim());
+                    ob1.put("Material name",mEditTextMaterialname.getText().toString().trim());
                     ob1.put("Subject Name",mEditTextSubjectname.getText().toString().trim());
                     ob1.put("Datails",mEditTextDetails.getText().toString().trim());
                     ob1.put("Mobile NO",mEditTextNO.getText().toString().trim());
