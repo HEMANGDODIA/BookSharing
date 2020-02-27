@@ -93,8 +93,9 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
         String lastname1 =lname.getText().toString().trim();
         String mobileno1 =mno.getText().toString().trim();
         String collegeid1 =cid.getText().toString().trim();
+        String uploadId=mRef.push().getKey();
 
-        DatabaseReference nRef = lRef.child(firstname1);
+        DatabaseReference nRef = lRef.child(uploadId);
         nRef.child("email").setValue(email1);
         nRef.child("firstname").setValue(firstname1);
         nRef.child("lastname").setValue(lastname1);
@@ -126,9 +127,9 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
-          editTextEmail.setError("Please enter a valid Email");
-          editTextEmail.requestFocus();
-          return;
+            editTextEmail.setError("Please enter a valid Email");
+            editTextEmail.requestFocus();
+            return;
         }
         if(password.length()<6)
         {
@@ -149,23 +150,23 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar.setVisibility(View.GONE);
-               if (task.isSuccessful())
-               {
-                   finish();
-                   Intent intent=new Intent(SignUp.this,Profile.class);
-                   intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-                   startActivity(intent);
-               }
-               else
-               {
-                   if (task.getException() instanceof FirebaseAuthUserCollisionException)
-                   {
-                       Toast.makeText(getApplicationContext(),"You Are Already Registered",Toast.LENGTH_SHORT).show();
-                   }else
-                   {
-                       Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                   }
-               }
+                if (task.isSuccessful())
+                {
+                    finish();
+                    Intent intent=new Intent(SignUp.this,Profile.class);
+                    intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+                else
+                {
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException)
+                    {
+                        Toast.makeText(getApplicationContext(),"You Are Already Registered",Toast.LENGTH_SHORT).show();
+                    }else
+                    {
+                        Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }

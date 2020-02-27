@@ -29,8 +29,8 @@ public class SeniorHome extends AppCompatActivity {
         button_sStationary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent in1=new Intent(SeniorHome.this,Material_senior.class);
-                 startActivity(in1);
+                Intent in1=new Intent(SeniorHome.this,Material_senior.class);
+                startActivity(in1);
 
 
             }
@@ -67,4 +67,3 @@ public class SeniorHome extends AppCompatActivity {
 
     }
 }
-

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword=findViewById(R.id.editTextPassword);
         progressBar=findViewById(R.id.progressbar);
 
+
     }
 
     @Override
