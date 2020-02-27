@@ -120,15 +120,13 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.senior_profile:
 
-                startActivity(new Intent(this,senior_profile_display.class));
-                break;
             case R.id.Logout:
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 startActivity(new Intent(this,MainActivity.class));
                 break;
+
         }
         return true;
     }
