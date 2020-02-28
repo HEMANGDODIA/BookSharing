@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,13 +49,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class HomePage extends AppCompatActivity {
     Button button_dBooks;
     Button button_dStationary;
     Button button_dNotes;
     Button button_dReferences;
-
+    private  TextView mValueView;
+    DatabaseReference databaseReference;
+    String ui;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -64,6 +69,12 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page2);
         Toolbar toolbar1 = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar1);
+
+
+
+        mValueView=(TextView)findViewById(R.id.textView6);
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

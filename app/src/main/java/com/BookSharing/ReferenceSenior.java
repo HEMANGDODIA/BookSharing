@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,8 +59,10 @@ public class ReferenceSenior extends AppCompatActivity {
         mRadioButton=findViewById(R.id.radioGroup);
         mImageView=findViewById(R.id.imageView4);
         mProgressBar=findViewById(R.id.progressbar1);
-        mStorageRef= FirebaseStorage.getInstance().getReference("Bookss");
-        mDatabadeRef= FirebaseDatabase.getInstance().getReference("Referenece");
+        mStorageRef= FirebaseStorage.getInstance().getReference("Books");
+        String uploadId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabadeRef= FirebaseDatabase.getInstance().getReference().child("profileinfo").child(uploadId).child("Reference");
+
 
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override

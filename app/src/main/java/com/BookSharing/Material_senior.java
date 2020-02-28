@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -61,7 +62,9 @@ public class Material_senior extends AppCompatActivity {
         mImageView=findViewById(R.id.imageView3);
         mProgressBar=findViewById(R.id.progressbar1);
         mStorageRef= FirebaseStorage.getInstance().getReference("Bookss");
-        mDatabadeRef= FirebaseDatabase.getInstance().getReference("Material");
+        String uploadId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabadeRef= FirebaseDatabase.getInstance().getReference().child("profileinfo").child(uploadId).child("Material");
+
 
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override

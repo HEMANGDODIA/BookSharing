@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -51,7 +53,7 @@ public class BooksSenior extends AppCompatActivity {
     private StorageTask mUploadTask;
 
     private Uri mImageUri;
-
+    String CurrentUserID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +68,9 @@ public class BooksSenior extends AppCompatActivity {
         mRadioButton=findViewById(R.id.radioGroup);
         mImageView=findViewById(R.id.imageView3);
         mProgressBar=findViewById(R.id.progressbar1);
-        mStorageRef= FirebaseStorage.getInstance().getReference("Bookss");
-        mDatabadeRef= FirebaseDatabase.getInstance().getReference("Books");
+        mStorageRef= FirebaseStorage.getInstance().getReference("Books");
+        CurrentUserID= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabadeRef= FirebaseDatabase.getInstance().getReference().child("books").child(CurrentUserID);
 
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,27 +133,24 @@ public class BooksSenior extends AppCompatActivity {
     }
     private void uploadFile(){
         if(mImageUri!=null){
-            StorageReference fileReference=mStorageRef
-                    .child("Books/"+System.currentTimeMillis()+"."+getFileExtension(mImageUri));
+            StorageReference fileReference=mStorageRef.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri));
             mUploadTask=fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressBar.setProgress(0);
-                        }
-                    },5000);
+
+                    Log.e("11111111111111111",mStorageRef.getDownloadUrl().toString());
+                    Log.e("11111111111111111",mStorageRef.getPath().toString());
+                    Log.e("11111111111111111",mStorageRef.getStorage().toString());
                     Toast.makeText(BooksSenior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
                     Map<String,String> ob1=new HashMap<>();
                     ob1.put("url",mStorageRef.getDownloadUrl().toString());
-                    ob1.put("Book name",mEditTextBookname.getText().toString().trim());
-                    ob1.put("Auther's Name",mEditTextAuthorname.getText().toString().trim());
+                    ob1.put("Bookname",mEditTextBookname.getText().toString().trim());
+                    ob1.put("AuthersName",mEditTextAuthorname.getText().toString().trim());
                     ob1.put("Datails",mEditTextDetails.getText().toString().trim());
-                    ob1.put("Mobile NO",mEditTextNO.getText().toString().trim());
+                    ob1.put("MobileNO",mEditTextNO.getText().toString().trim());
                     String uploadId=mDatabadeRef.push().getKey();
                     mDatabadeRef.child(uploadId).setValue(ob1);
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

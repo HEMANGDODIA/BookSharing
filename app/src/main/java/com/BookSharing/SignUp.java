@@ -3,6 +3,7 @@ package com.BookSharing;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -83,26 +84,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
-        final DatabaseReference lRef = mRef.child("profile info");
-        final EditText emailname = findViewById(R.id.editTextEmail);
-        final com.google.android.material.textfield.TextInputEditText fname= findViewById(R.id.textInputEditText3);
-        final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
-        final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
-        final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
-        String email1 = emailname.getText().toString().trim();
-        String firstname1 =fname.getText().toString().trim();
-        String lastname1 =lname.getText().toString().trim();
-        String mobileno1 =mno.getText().toString().trim();
-        String collegeid1 =cid.getText().toString().trim();
-        String uploadId=mRef.push().getKey();
 
-        DatabaseReference nRef = lRef.child(uploadId);
-        nRef.child("email").setValue(email1);
-        nRef.child("firstname").setValue(firstname1);
-        nRef.child("lastname").setValue(lastname1);
-        nRef.child("mobile number").setValue(mobileno1);
-        nRef.child("college id").setValue(collegeid1);
         switch (v.getId())
         {
             case R.id.buttonSignup:
@@ -134,7 +116,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
         String collegeid1 =cid.getText().toString().trim();
         String Confirmpassword =fname.getText().toString().trim();
 
-
+        FirebaseAuth.getInstance().signOut();
 
 
         if(email.isEmpty())
@@ -220,6 +202,7 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
                 if (task.isSuccessful())
                 {
                     finish();
+                   // onCallData();
                     Intent intent=new Intent(SignUp.this,Profile.class);
                     intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
@@ -236,5 +219,35 @@ public class SignUp extends AppCompatActivity  implements View.OnClickListener {
                 }
             }
         });
+    }
+    private void onCallData()
+    {
+        DatabaseReference mRef;// = FirebaseDatabase.getInstance().getReference();
+        //final DatabaseReference lRef = mRef.child("profile info");
+        final EditText emailname = findViewById(R.id.editTextEmail);
+        final com.google.android.material.textfield.TextInputEditText fname= findViewById(R.id.textInputEditText3);
+        final com.google.android.material.textfield.TextInputEditText lname= findViewById(R.id.textInputEditText2);
+        final com.google.android.material.textfield.TextInputEditText mno= findViewById(R.id.textInputEditText5);
+        final com.google.android.material.textfield.TextInputEditText cid= findViewById(R.id.textInputEditText6);
+        String email1 = emailname.getText().toString().trim();
+        String firstname1 =fname.getText().toString().trim();
+        String lastname1 =lname.getText().toString().trim();
+        String mobileno1 =mno.getText().toString().trim();
+        String collegeid1 =cid.getText().toString().trim();
+
+
+
+
+        String uploadId=FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+
+        Log.e("Signup", "onClick: " + uploadId );
+
+        mRef = FirebaseDatabase.getInstance().getReference().child("profileinfo").child(uploadId);
+        mRef.child("email").setValue(email1);
+        mRef.child("firstname").setValue(firstname1);
+        mRef.child("lastname").setValue(lastname1);
+        mRef.child("mobilenumber").setValue(mobileno1);
+        mRef.child("collegeid").setValue(collegeid1);
     }
 }

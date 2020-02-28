@@ -18,64 +18,79 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:orientation="vertical">
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search by: Title,Author"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="26dp">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="5dp">
 
-    </SearchView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-        <Button
-            android:id="@+id/dbutton"
-            style="@style/button5"
-            android:textSize="10dp"
-            android:drawableTop="@mipmap/books"
-            android:background="@color/white"
-            android:text="Books" />
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search by: Title,Author"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="26dp">
 
+        </SearchView>
 
-        <Button
-            android:id="@+id/dbutton1"
-            style="@style/button5"
-            android:textSize="10dp"
-            android:background="@color/white"
-            android:drawableTop="@mipmap/stationary"
-            android:text="Stationary" />
-        <Button
-            android:id="@+id/dbutton2"
-            style="@style/button5"
-            android:textSize="10dp"
-            android:drawableTop="@mipmap/notes"
-            android:background="@color/white"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/dbutton"
+                style="@style/button5"
+                android:background="@color/white"
+                android:drawableTop="@mipmap/books"
+                android:text="Books"
+                android:textSize="10dp" />
 
 
-            android:text="Notes" />
-        <Button
-            android:id="@+id/dbutton3"
-            style="@style/button5"
-            android:textSize="10dp"
-            android:drawableTop="@mipmap/references"
-            android:background="@color/white"
+            <Button
+                android:id="@+id/dbutton1"
+                style="@style/button5"
+                android:background="@color/white"
+                android:drawableTop="@mipmap/stationary"
+                android:text="Stationary"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/dbutton2"
+                style="@style/button5"
+                android:background="@color/white"
+                android:drawableTop="@mipmap/notes"
+                android:text="Notes"
 
 
-            android:text="References" />
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/dbutton3"
+                style="@style/button5"
+                android:background="@color/white"
+                android:drawableTop="@mipmap/references"
+                android:text="References"
 
 
+                android:textSize="10dp" />
 
 
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="110dp"
+        android:layout_height="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="78dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
