@@ -9,16 +9,17 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.BookSharing.ui.Bookdata;
+import com.BookSharing.ui.Materialdata;
+import com.BookSharing.ui.Notesdata;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
+class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder> {
 
-    private List<Bookdata> moviesList;
+    private List<Materialdata> moviesList;
 
-    public MoviesAdapter(List<Bookdata> tDlist) {
+    public MaterialAdapter(List<Materialdata> tDlist) {
         moviesList=tDlist;
     }
 
@@ -39,16 +40,16 @@ ImageView image_view;
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.movie_list_row, parent, false);
+                .inflate(R.layout.notes_list, parent, false);
 
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Bookdata movie = moviesList.get(position);
-        holder.title.setText(movie.getBookname());
-        holder.genre.setText(movie.getAuthersName());
+        Materialdata movie = moviesList.get(position);
+        holder.title.setText(movie.getMaterialname());
+        holder.genre.setText(movie.getSubjectName());
         holder.details.setText(movie.getDetails());
         holder.mobileno.setText(movie.getMobileNO());
         Picasso.get().load(movie.getUrl()).into(holder.image_view);

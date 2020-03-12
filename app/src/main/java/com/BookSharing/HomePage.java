@@ -72,7 +72,6 @@ public class HomePage extends AppCompatActivity {
 
 
 
-        mValueView=(TextView)findViewById(R.id.textView6);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);

@@ -21,8 +21,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -133,35 +136,37 @@ public class BooksSenior extends AppCompatActivity {
     }
     private void uploadFile(){
         if(mImageUri!=null){
-            StorageReference fileReference=mStorageRef.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri));
-            mUploadTask=fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+            final StorageReference fileReference=mStorageRef.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri));
 
-                    Log.e("11111111111111111",mStorageRef.getDownloadUrl().toString());
-                    Log.e("11111111111111111",mStorageRef.getPath().toString());
-                    Log.e("11111111111111111",mStorageRef.getStorage().toString());
-                    Toast.makeText(BooksSenior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
-                    Map<String,String> ob1=new HashMap<>();
-                    ob1.put("url",mStorageRef.getDownloadUrl().toString());
-                    ob1.put("Bookname",mEditTextBookname.getText().toString().trim());
-                    ob1.put("AuthersName",mEditTextAuthorname.getText().toString().trim());
-                    ob1.put("Datails",mEditTextDetails.getText().toString().trim());
-                    ob1.put("MobileNO",mEditTextNO.getText().toString().trim());
-                    String uploadId=mDatabadeRef.push().getKey();
-                    mDatabadeRef.child(uploadId).setValue(ob1);
+            mUploadTask=fileReference.putFile(mImageUri);
+            Task downloadURI = mUploadTask.continueWithTask(new Continuation() {
+                @Override
+                public Object then(@NonNull Task task) throws Exception {
+                    return fileReference.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+
+                    if(task.isSuccessful()){
+                        Map<String,String> ob1=new HashMap<>();
+                        Toast.makeText(BooksSenior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
+                        //Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
+                        ob1.put("url",task.getResult().toString());
+                        ob1.put("Bookname",mEditTextBookname.getText().toString().trim());
+                        ob1.put("AuthersName",mEditTextAuthorname.getText().toString().trim());
+                        ob1.put("Datails",mEditTextDetails.getText().toString().trim());
+                        ob1.put("MobileNO",mEditTextNO.getText().toString().trim());
+                        String uploadId=mDatabadeRef.push().getKey();
+                        mDatabadeRef.child(uploadId).setValue(ob1);
+
+                    }
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(BooksSenior.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress=(100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-                    mProgressBar.setProgress((int) progress);
                 }
             });
         }else

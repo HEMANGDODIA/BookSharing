@@ -18,8 +18,11 @@ import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,7 +47,7 @@ public class Notes_senior extends AppCompatActivity {
     private StorageReference mStorageRef;
     private DatabaseReference mDatabadeRef;
     private StorageTask mUploadTask;
-
+    String CurrentUserID;
     private Uri mImageUri;
 
 
@@ -61,9 +64,9 @@ public class Notes_senior extends AppCompatActivity {
         mRadioButton=findViewById(R.id.radioGroup);
         mImageView=findViewById(R.id.imageView3);
         mProgressBar=findViewById(R.id.progressbar1);
-        mStorageRef= FirebaseStorage.getInstance().getReference("Bookss");
-        String uploadId= FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mDatabadeRef= FirebaseDatabase.getInstance().getReference().child("profileinfo").child(uploadId).child("Notes");
+        mStorageRef= FirebaseStorage.getInstance().getReference("Notes");
+        CurrentUserID= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabadeRef= FirebaseDatabase.getInstance().getReference().child("Notes").child(CurrentUserID);
 
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,38 +121,37 @@ public class Notes_senior extends AppCompatActivity {
     }
     private void uploadFile(){
         if(mImageUri!=null){
-            StorageReference fileReference=mStorageRef
-                    .child("Books/"+System.currentTimeMillis()+"."+getFileExtension(mImageUri));
-            mUploadTask=fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            final StorageReference fileReference=mStorageRef.child(System.currentTimeMillis()+"."+getFileExtension(mImageUri));
+
+            mUploadTask=fileReference.putFile(mImageUri);
+            Task downloadURI = mUploadTask.continueWithTask(new Continuation() {
                 @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Handler handler=new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressBar.setProgress(0);
-                        }
-                    },5000);
-                    Toast.makeText(Notes_senior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
-                    Map<String,String> ob1=new HashMap<>();
-                    ob1.put("url",mStorageRef.getDownloadUrl().toString());
-                    ob1.put("Topic name",mEditTextTopicname.getText().toString().trim());
-                    ob1.put("Subject Name",mEditTextSubjectname.getText().toString().trim());
-                    ob1.put("Datails",mEditTextDetails.getText().toString().trim());
-                    ob1.put("Mobile NO",mEditTextNO.getText().toString().trim());
-                    String uploadId=mDatabadeRef.push().getKey();
-                    mDatabadeRef.child(uploadId).setValue(ob1);
+                public Object then(@NonNull Task task) throws Exception {
+                    return fileReference.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+
+                    if(task.isSuccessful()){
+                        Map<String,String> ob1=new HashMap<>();
+                        Toast.makeText(Notes_senior.this,"Upload successfull",Toast.LENGTH_SHORT).show();
+                        //Task<Uri> downloadUri = taskSnapshot.getStorage().getDownloadUrl();
+                        ob1.put("url",task.getResult().toString());
+                        ob1.put("TopicName",mEditTextTopicname.getText().toString().trim());
+                        ob1.put("SubjectName",mEditTextSubjectname.getText().toString().trim());
+                        ob1.put("Datails",mEditTextDetails.getText().toString().trim());
+                        ob1.put("MobileNO",mEditTextNO.getText().toString().trim());
+                        String uploadId=mDatabadeRef.push().getKey();
+                        mDatabadeRef.child(uploadId).setValue(ob1);
+
+                    }
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(Notes_senior.this,e.getMessage(),Toast.LENGTH_SHORT).show();
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress=(100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-                    mProgressBar.setProgress((int) progress);
                 }
             });
         }else

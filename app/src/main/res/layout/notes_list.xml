@@ -48,8 +48,7 @@
 
             android:selectAllOnFocus="false"
             android:linksClickable="false"
-            android:autoLink="all"
-            />
+            android:autoLink="all"            />
         <TextView
             android:id="@+id/details"
             android:layout_width="match_parent"

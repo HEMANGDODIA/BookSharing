@@ -82,7 +82,7 @@ public class donee_books extends AppCompatActivity {
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(mAdapter);
-                Log.e("1111111",tDlist.get(0).getUrl());
+//                Log.e("1111111",tDlist.get(0).getUrl());
 /*
 
                 for(int i=0;i<tDlist.size();i++){
@@ -99,4 +99,4 @@ public class donee_books extends AppCompatActivity {
         });
     }
 
-};
+}

@@ -17,4 +17,5 @@
     <string name="title_activity_senior_home">Home</string>
     <string name="action_settings">Logout</string>
 
+    <string name="my_text"><u>@id/mobileno</u></string>
 </resources>
