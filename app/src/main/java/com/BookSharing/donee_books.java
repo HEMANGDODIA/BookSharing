@@ -33,7 +33,7 @@ public class donee_books extends AppCompatActivity {
     String CurrentUser_ID;
     Spinner spinner1;
     private RecyclerView recyclerView;
-    private MoviesAdapter mAdapter;
+    private BookAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +41,20 @@ public class donee_books extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donee_books);
 
+        Spinner spinner1 = findViewById(R.id.spinner1);
+        ArrayAdapter<String> adepter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,selectbook);
+        spinner1.setAdapter(adepter);
+
+        mAuth = FirebaseAuth.getInstance();
         spinner1 = findViewById(R.id.spinner1);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
-
-        //ArrayAdapter<String> adepter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,selectbook);
-        //spinner1.setAdapter(adepter);
-
         ongetData();
     }
-
-
-
-
 
     private void ongetData()
     {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         CurrentUser_ID=FirebaseAuth.getInstance().getCurrentUser().getUid();
-
 
         databaseReference.child("books").child(CurrentUser_ID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -67,7 +62,7 @@ public class donee_books extends AppCompatActivity {
 
                 long value=dataSnapshot.getChildrenCount();
 
-                List<Bookdata> tDlist = new ArrayList<>();
+             List<Bookdata> tDlist = new ArrayList<>();
 
                 for (DataSnapshot d: dataSnapshot.getChildren()){
                     Bookdata tD = d.getValue(Bookdata.class);
@@ -77,15 +72,15 @@ public class donee_books extends AppCompatActivity {
 
 
 
-                mAdapter = new MoviesAdapter(tDlist);
+                mAdapter = new BookAdapter(tDlist);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(mAdapter);
-//                Log.e("1111111",tDlist.get(0).getUrl());
-/*
+               //Log.e("1111111",tDlist.get(0).getUrl());
 
-                for(int i=0;i<tDlist.size();i++){
+
+                /*for(int i=0;i<tDlist.size();i++){
                     Toast.makeText(donee_books.this,"TaskTitle = "+tDlist.get(i).getAuthersName(),Toast.LENGTH_LONG).show();
                 }*/
 
