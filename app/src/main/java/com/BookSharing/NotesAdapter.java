@@ -23,15 +23,15 @@ class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title,details, genre,mobileno;
-ImageView image_view;
+        public TextView title,Details, genre,mobileno;
+        ImageView image_view;
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             image_view =  view.findViewById(R.id.image_view);
             genre = (TextView) view.findViewById(R.id.genre);
             mobileno = (TextView) view.findViewById(R.id.mobileno);
-            details = (TextView) view.findViewById(R.id.details);
+            Details = (TextView) view.findViewById(R.id.details);
         }
     }
 
@@ -49,7 +49,7 @@ ImageView image_view;
         Notesdata movie = notelist.get(position);
         holder.title.setText(movie.getTopicName());
         holder.genre.setText(movie.getSubjectName());
-        holder.details.setText(movie.getDetails());
+        holder.Details.setText(movie.getDetails());
         holder.mobileno.setText(movie.getMobileNO());
         Picasso.get().load(movie.getUrl()).into(holder.image_view);
         Log.e("URL", String.valueOf(notelist.get(position)));

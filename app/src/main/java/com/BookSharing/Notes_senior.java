@@ -140,7 +140,7 @@ public class Notes_senior extends AppCompatActivity {
                         ob1.put("url",task.getResult().toString());
                         ob1.put("TopicName",mEditTextTopicname.getText().toString().trim());
                         ob1.put("SubjectName",mEditTextSubjectname.getText().toString().trim());
-                        ob1.put("Datails",mEditTextDetails.getText().toString().trim());
+                        ob1.put("Details",mEditTextDetails.getText().toString().trim());
                         ob1.put("MobileNO",mEditTextNO.getText().toString().trim());
                         String uploadId=mDatabadeRef.push().getKey();
                         mDatabadeRef.child(uploadId).setValue(ob1);

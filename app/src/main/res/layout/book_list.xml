@@ -7,19 +7,22 @@
     android:focusable="true"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="100dp">
+
 
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="50dp"
         android:layout_height="71dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="20dp"/>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="107dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -47,14 +50,16 @@
             android:text="@string/my_text"
 
             android:selectAllOnFocus="false"
-            android:linksClickable="false"
+            android:linksClickable="true"
             android:autoLink="all"            />
         <TextView
             android:id="@+id/details"
             android:layout_width="match_parent"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:textSize="16dp" />
 
+
     </LinearLayout>
+
 </LinearLayout>
