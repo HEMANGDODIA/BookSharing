@@ -50,7 +50,7 @@ public class donee_stationary extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         CurrentUser_ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        databaseReference.child("Notes").child(CurrentUser_ID).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("Material").child(CurrentUser_ID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

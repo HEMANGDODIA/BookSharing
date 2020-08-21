@@ -12,8 +12,8 @@ public class Materialdata {
         return Materialname;
     }
 
-    public void setMaterialname(String materialname) {
-        Materialname = materialname;
+    public void setMaterialname(String topicname) {
+        Materialname = topicname;
     }
 
     public String getSubjectName() {

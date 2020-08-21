@@ -18,9 +18,7 @@ class MaterialAdapter extends RecyclerView.Adapter<MaterialAdapter.MyViewHolder>
 
     private List<Materialdata> materiallist;
 
-    public MaterialAdapter(List<Materialdata> tDlist) {
-        materiallist =tDlist;
-    }
+    public MaterialAdapter(List<Materialdata> tDlist) { materiallist =tDlist; }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title,details, genre,mobileno;
@@ -39,7 +37,7 @@ ImageView image_view;
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.material_list, parent, false);
+                .inflate(R.layout.material_data, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -56,7 +54,5 @@ ImageView image_view;
     }
 
     @Override
-    public int getItemCount() {
-        return materiallist.size();
-    }
+    public int getItemCount() { return materiallist.size(); }
 }
