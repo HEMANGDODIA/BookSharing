@@ -8,7 +8,7 @@ public class Bookdata {
     private String MobileNO;
     private String url;
 
-    public String getMaterialname() {
+    public String getBookname() {
         return Bookname;
     }
 
@@ -16,7 +16,7 @@ public class Bookdata {
         Bookname = materialname;
     }
 
-    public String getSubjectName() {
+    public String getAuthersName() {
         return AuthersName;
     }
 

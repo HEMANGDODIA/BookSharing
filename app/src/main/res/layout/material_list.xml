@@ -49,10 +49,11 @@
             android:selectAllOnFocus="false"
             android:linksClickable="false"
             android:autoLink="all"            />
+
         <TextView
             android:id="@+id/details"
             android:layout_width="match_parent"
-            android:layout_height="33dp"
+            android:layout_height="70dp"
             android:layout_alignParentTop="true"
             android:textSize="16dp" />
 

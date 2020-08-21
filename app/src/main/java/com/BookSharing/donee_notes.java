@@ -32,6 +32,7 @@ public class donee_notes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donee_notes);
 
@@ -40,8 +41,7 @@ public class donee_notes extends AppCompatActivity {
         spinner3.setAdapter(adepter);
 
         mAuth = FirebaseAuth.getInstance();
-
-        spinner1 = findViewById(R.id.spinner1);
+        spinner1 = findViewById(R.id.spinner3);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         ongetData();
     }

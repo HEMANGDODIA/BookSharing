@@ -7,11 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.BookSharing.ui.Bookdata;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,7 +16,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -27,13 +23,12 @@ import java.util.List;
 
 public class donee_books extends AppCompatActivity {
     FirebaseAuth mAuth;
-    static final String[] selectbook = new String[]{"Database Management System","Data Structure&Algorithm","Java","Operating System"};
-
     DatabaseReference databaseReference;
     String CurrentUser_ID;
     Spinner spinner1;
     private RecyclerView recyclerView;
     private BookAdapter mAdapter;
+    static final String[] selectbook = new String[]{"Database Management System","Data Structure&Algorithm","Java","Operating System"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +36,9 @@ public class donee_books extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donee_books);
 
-        Spinner spinner1 = findViewById(R.id.spinner1);
+        final Spinner spinner3 = findViewById(R.id.spinner1);
         ArrayAdapter<String> adepter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,selectbook);
-        spinner1.setAdapter(adepter);
+        spinner3.setAdapter(adepter);
 
         mAuth = FirebaseAuth.getInstance();
         spinner1 = findViewById(R.id.spinner1);

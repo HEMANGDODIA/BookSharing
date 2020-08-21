@@ -16,10 +16,10 @@ import java.util.List;
 
 class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder> {
 
-    private List<Notesdata> moviesList;
+    private List<Notesdata> notelist;
 
     public NotesAdapter(List<Notesdata> tDlist) {
-        moviesList=tDlist;
+        notelist =tDlist;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -46,17 +46,17 @@ ImageView image_view;
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Notesdata movie = moviesList.get(position);
+        Notesdata movie = notelist.get(position);
         holder.title.setText(movie.getTopicName());
         holder.genre.setText(movie.getSubjectName());
         holder.details.setText(movie.getDetails());
         holder.mobileno.setText(movie.getMobileNO());
         Picasso.get().load(movie.getUrl()).into(holder.image_view);
-        Log.e("URL", String.valueOf(moviesList.get(position)));
+        Log.e("URL", String.valueOf(notelist.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return notelist.size();
     }
 }
